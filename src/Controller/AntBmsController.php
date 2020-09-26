@@ -146,7 +146,7 @@ class AntBmsController extends AbstractController
             'WdZb' => '55.5',
             'Zdy' => '55.5',
             'Dl' => '55.5',
-            'Soc' => '55.5',
+            'Soc' => '35.5',
             'SyDl' => '55.5',
             'ZxhRl' => '55.5',
             'BmsYxSj' => '55.5',
