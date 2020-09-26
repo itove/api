@@ -169,10 +169,10 @@ class AntBmsController extends AbstractController
             'DcGjZsw' => '55.5',
         ];
 
-        for ($i = 1; $i <= 32; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             $GetSingleEquipment['DY' . $i] = 55.5;
         }
-        for ($i = 1; $i <= 8; $i++) {
+        for ($i = 1; $i <= 4; $i++) {
             $GetSingleEquipment['Wd' . $i] = 55.5;
         }
 
