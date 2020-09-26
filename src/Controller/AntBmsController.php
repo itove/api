@@ -11,6 +11,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class AntBmsController extends AbstractController
 {
+    private $redis;
+    public function __construct()
+    {
+        $this->redis = new \Redis();
+        $this->redis->connect('127.0.0.1', 6379);
+    }
     /**
      * @Route("/", name="index")
      */
@@ -22,6 +28,8 @@ class AntBmsController extends AbstractController
             'GetEquipmentDetils' => '/GetEquipmentDetils',
             'GetSingleEquipment' => '/GetSingleEquipment'
         ];
+        // $this->redis->set('fuck', $resp);
+        $resp = $this->redis->mget('fuck');
         // return $this->json($resp);
         // return new JsonResponse($resp);
         return new JsonResponse(json_encode($resp, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), 200, [], true);
