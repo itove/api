@@ -139,35 +139,43 @@ class AntBmsController extends AbstractController
             // ZdDtDy—最低单体电压 ZdDtDyWz--最低单体电压位置 PjDtDy--平均单体电压 DcCs--电池串数 FdMosQdDy--放电MOS驱动电压
             // CdMosQdDy--充电MOS驱动电压 FdDnsDy--放电DS电压 DcCdCs--电池充电次数 DcGzZsw--电池故障指示位
             // DcGjZsw--电池告警指示位 DY1- DY32 设备单体电压32组 Wd1- Wd8设备温度 8组
-            'DcZt' => '',
-            'DwZt' => '',
-            'SjSj' => '',
-            'JdZb' => '',
-            'WdZb' => '',
-            'Zdy' => '',
-            'Dl' => '',
-            'Soc' => '',
-            'SyDl' => '',
-            'ZxhRl' => '',
-            'BmsYxSj' => '',
-            'CdMosZt' => '',
-            'FdMosZt' => '',
-            'JhZt' => '',
-            'JhZtZsw' => '',
-            'Gl' => '',
-            'ZgDtDy' => '',
-            'ZgDtDyWz' => '',
-            'ZdDtDy' => '',
-            'ZdDtDyWz' => '',
-            'PjDtDy' => '',
-            'DcCs' => '',
-            'FdMosQdDy' => '',
-            'CdMosQdDy' => '',
-            'FdDnsDy' => '',
-            'DcCdCs' => '',
-            'DcGzZsw' => '',
-            'DcGjZsw' => '',
+            'DcZt' => '55.5',
+            'DwZt' => '55.5',
+            'SjSj' => '55.5',
+            'JdZb' => '55.5',
+            'WdZb' => '55.5',
+            'Zdy' => '55.5',
+            'Dl' => '55.5',
+            'Soc' => '55.5',
+            'SyDl' => '55.5',
+            'ZxhRl' => '55.5',
+            'BmsYxSj' => '55.5',
+            'CdMosZt' => '55.5',
+            'FdMosZt' => '55.5',
+            'JhZt' => '55.5',
+            'JhZtZsw' => '55.5',
+            'Gl' => '55.5',
+            'ZgDtDy' => '55.5',
+            'ZgDtDyWz' => '55.5',
+            'ZdDtDy' => '55.5',
+            'ZdDtDyWz' => '55.5',
+            'PjDtDy' => '55.5',
+            'DcCs' => '55.5',
+            'FdMosQdDy' => '55.5',
+            'CdMosQdDy' => '55.5',
+            'FdDnsDy' => '55.5',
+            'DcCdCs' => '55.5',
+            'DcGzZsw' => '55.5',
+            'DcGjZsw' => '55.5',
         ];
+
+        for ($i = 1; $i <= 32; $i++) {
+            $GetSingleEquipment['DY' . $i] = 55.5;
+        }
+        for ($i = 1; $i <= 8; $i++) {
+            $GetSingleEquipment['Wd' . $i] = 55.5;
+        }
+
         $this->redis->del('GetSingleEquipment');
         foreach ($GetSingleEquipment as $k => $v) {
             $this->redis->hset('GetSingleEquipment', $k, $v);
