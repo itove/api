@@ -12,13 +12,15 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class AntBmsController extends AbstractController
 {
     private $redis;
+
     public function __construct()
     {
         $this->redis = new \Redis();
         $this->redis->connect('127.0.0.1', 6379);
     }
     
-    public function wrap($data){
+    public function wrap($data)
+    {
         $code = '';
         $message = '';
         $token  = '';
