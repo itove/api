@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/antbms", name="antbms_")
@@ -44,11 +45,12 @@ class AntBmsController extends AbstractController
         return new JsonResponse($resp, 200, [], true);
     }
     /**
-     * @Route("/UserLogin", name="userlogin")
+     * @Route("/UserLogin", name="userlogin", methods={"POST"})
      */
-    public function UserLogin()
+    public function UserLogin(Request $request)
     {
         $data = $this->redis->hgetall('UserLogin');
+        $data = $request;
         return new JsonResponse($this->wrap($data));
     }
 
