@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Cookie;
 
 /**
  * @Route("/antbms", name="antbms_")
@@ -50,8 +52,17 @@ class AntBmsController extends AbstractController
     public function UserLogin(Request $request)
     {
         $data = $this->redis->hgetall('UserLogin');
-        $data = $request->request->all();
-        return new JsonResponse($this->wrap($data));
+        $username = $request->request->get('Username');
+        $pass = $request->request->get('Pwd');
+        $time = $request->request->get('Time');
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+        if ($username == 'admin' && $pass = '123456') {
+            $response->headers->setCookie(Cookie::create('sessionid', 'sometoken'));
+        }
+        // return new JsonResponse($this->wrap($data));
+        $response->setContent(json_encode($this->wrap($data)));
+        $response->send();
     }
 
     /**
