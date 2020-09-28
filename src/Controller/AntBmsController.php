@@ -50,7 +50,7 @@ class AntBmsController extends AbstractController
     public function UserLogin(Request $request)
     {
         $data = $this->redis->hgetall('UserLogin');
-        $data = $request;
+        $data = $request->request->all();
         return new JsonResponse($this->wrap($data));
     }
 
