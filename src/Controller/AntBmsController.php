@@ -57,7 +57,7 @@ class AntBmsController extends AbstractController
         $time = $request->request->get('Time');
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
-        if ($username == 'admin' && $pass = '123456') {
+        if ($username == 'admin' && $pass == '123456') {
             $response->headers->setCookie(Cookie::create('sessionid', 'sometoken'));
         }
         // return new JsonResponse($this->wrap($data));
